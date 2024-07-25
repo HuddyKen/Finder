@@ -16,7 +16,7 @@ app.get('/fm-channels/:zip', async (req, res) => {
     try {
         // Construct the correct URL
         const url = `https://radio-locator.com/cgi-bin/vacant?select=city&city=${zip}&state=&x=0&y=0`;
-        
+
         // Log the constructed URL for debugging
         console.log(`Requesting URL: ${url}`);
 
@@ -31,6 +31,9 @@ app.get('/fm-channels/:zip', async (req, res) => {
                 channels.push(channelMatch[1]);
             }
         });
+
+        // Log the channels array for debugging
+        console.log('Extracted channels:', channels);
 
         res.json(channels);
     } catch (error) {
