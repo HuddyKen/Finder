@@ -44,9 +44,11 @@
         }
 
         function getFmChannels(zip) {
+            console.log(`Fetching FM channels for zip code: ${zip}`);
             fetch(`/fm-channels/${zip}`)
                 .then(response => response.json())
                 .then(data => {
+                    console.log('FM channels data:', data);
                     const fmInfo = document.getElementById('fm-info');
                     fmInfo.innerHTML = ''; // Clear previous content
                     if (data.length > 0) {
