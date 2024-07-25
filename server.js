@@ -15,7 +15,7 @@ app.get('/fm-channels/:zip', async (req, res) => {
 
     try {
         // Construct the correct URL
-        const url = `https://radio-locator.com/cgi-bin/vacant?select=city&city=${encodeURIComponent(zip)}&state=&x=0&y=0`;
+        const url = `https://radio-locator.com/cgi-bin/vacant?select=city&city=${zip}&state=&x=0&y=0`;
         
         // Log the constructed URL for debugging
         console.log(`Requesting URL: ${url}`);
