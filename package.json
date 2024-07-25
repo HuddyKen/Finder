@@ -1,18 +1,12 @@
 {
-  "name": "radio-scraper",
+  "name": "Radio-Scraper",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.2",
-    "cheerio": "^1.0.0-rc.12",
-    "express": "^4.19.2"
-  },
-  "description": ""
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.10"
+  }
 }

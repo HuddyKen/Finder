@@ -1,21 +1,30 @@
-// api/scrape.js
+// api/fm-channels.js
 const axios = require('axios');
 const cheerio = require('cheerio');
 
 export default async function handler(req, res) {
-  const url = 'https://example.com'; // Replace with the URL you want to scrape
+  const zip = req.query.zip;
+  
+  if (!zip) {
+    return res.status(400).json({ error: 'ZIP code is required' });
+  }
+
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(`https://radio-locator.com/cgi-bin/vacant?select=city&city=${zip}&state=&x=0&y=0`);
     const html = response.data;
     const $ = cheerio.load(html);
-    const data = [];
 
-    $('p').each((index, element) => {
-      data.push($(element).text());
+    const fmChannels = [];
+    $('td.vacant.smalltype').each((i, element) => {
+      const channel = $(element).text().trim();
+      if (channel) {
+        fmChannels.push(channel);
+      }
     });
 
-    res.status(200).json(data);
+    res.status(200).json(fmChannels);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch data' });
+    console.error('Error fetching FM channels:', error);
+    res.status(500).json({ error: 'An error occurred while fetching FM channels' });
   }
 }
