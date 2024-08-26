@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     const fmChannels = [];
 
     // Select and iterate over each 'td' element with the classes 'vacant' and 'smalltype'
-    $('td.vacant.smalltype').each((i, element) => {
+    $('td.vacant smalltype').each((i, element) => {
       const channel = $(element).text().trim();
       if (channel) {
         fmChannels.push(channel);
