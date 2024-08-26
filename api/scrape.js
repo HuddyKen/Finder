@@ -33,7 +33,7 @@ export default async function handler(req, res) {
     res.status(200).json(fmChannels);
   } catch (error) {
     // Log error and send error response
-    console.error('Error fetching FM channels:', error);
+    console.error('Error fetching FM channels:', fmChannels, error);
     res.status(500).json({ error: 'An error occurred while fetching FM channels' });
   }
 }
